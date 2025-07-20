@@ -1,0 +1,37 @@
+name: wasel_task
+description: "Wasel task flutter app."
+
+publish_to: 'none'
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons:
+  flutter_bloc:
+  http:
+  json_annotation:
+  connectivity_plus:
+  flutter_screenutil:
+  equatable:
+  cached_network_image:
+  collection:
+  firebase_auth:
+  shared_preferences:
+  package_info_plus:
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  build_runner:
+  json_serializable:
+
+
+flutter:
+  uses-material-design: true

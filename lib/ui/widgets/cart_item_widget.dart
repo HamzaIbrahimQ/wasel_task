@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wasel_task/cubits/cart/cart_cubit.dart';
+import 'package:wasel_task/models/cart/cart_item_model.dart';
+
+class CartItemWidget extends StatelessWidget {
+  final CartItem item;
+  final int index;
+
+  const CartItemWidget({super.key, required this.item, required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Image.network(item.product.thumbnail ?? '', width: 50.w),
+      title: Text(item.product.title ?? ''),
+      subtitle: Text('Qty: ${item.quantity} | \$${(item.product.price ?? 1) * (item.quantity ?? 1)}'),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            icon: const Icon(Icons.remove),
+            onPressed: () => context.read<CartCubit>().decreaseQuantity(index),
+          ),
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () => context.read<CartCubit>().increaseQuantity(index),
+          ),
+          IconButton(
+            icon: const Icon(Icons.delete, color: Colors.redAccent),
+            onPressed: () => context.read<CartCubit>().removeItem(index),
+          ),
+        ],
+      ),
+    );
+  }
+}

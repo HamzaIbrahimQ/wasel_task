@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "961335996516",
+    "project_id": "wasel-task-956a7",
+    "storage_bucket": "wasel-task-956a7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961335996516:android:ebecdfb42b319aac96af71",
+        "android_client_info": {
+          "package_name": "com.waseltask.app.wasel_task"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9btgUCBPPmGKKx2-B43KQd41QeppOjps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
