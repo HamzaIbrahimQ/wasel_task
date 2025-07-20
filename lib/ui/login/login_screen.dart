@@ -5,6 +5,7 @@ import 'package:wasel_task/cubits/login/login_cubit.dart';
 import 'package:wasel_task/cubits/login/login_state.dart';
 import 'package:wasel_task/cubits/products/products_cubit.dart';
 import 'package:wasel_task/ui/products/ui/products_screen.dart';
+import 'package:wasel_task/ui/widgets/app_button.dart';
 import 'package:wasel_task/ui/widgets/app_version_widget.dart';
 import 'package:wasel_task/ui/widgets/signup_prompt_widget.dart';
 import 'package:wasel_task/utils/validators.dart';
@@ -106,14 +107,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     20.verticalSpace,
 
                     /// Login button
-                    ElevatedButton(
+                    AppButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           context.read<LoginCubit>().login(_emailController.text, _passwordController.text);
                         }
                       },
-                      style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.black)),
-                      child: Text('Login', style: TextStyle(color: Colors.white, fontSize: 13.sp)),
+                      title: 'Login',
                     ),
                   ],
                 ),

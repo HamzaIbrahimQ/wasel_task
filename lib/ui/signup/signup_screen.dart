@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wasel_task/cubits/signup/signup_cubit.dart';
 import 'package:wasel_task/cubits/signup/signup_state.dart';
+import 'package:wasel_task/ui/widgets/app_button.dart';
 import 'package:wasel_task/utils/validators.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -101,14 +102,14 @@ class _SignupScreenState extends State<SignupScreen> {
                 20.verticalSpace,
 
                 /// signup button
-                ElevatedButton(
+                AppButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       context.read<SignupCubit>().signup(_emailController.text, _passwordController.text);
                     }
                   },
-                  style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.black)),
-                  child: Text('Sign Up', style: TextStyle(color: Colors.white, fontSize: 13.sp)),
+                  title: 'Sign Up',
+
                 ),
               ],),
             ),

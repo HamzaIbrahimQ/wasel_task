@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wasel_task/cubits/cart/cart_cubit.dart';
 import 'package:wasel_task/models/products/product_model.dart';
+import 'package:wasel_task/ui/widgets/app_button.dart';
 
 class ProductWidget extends StatelessWidget {
   final ProductModel product;
@@ -46,12 +47,11 @@ class ProductWidget extends StatelessWidget {
             /// Add to cart button
             Align(
               alignment: AlignmentDirectional.centerEnd,
-              child: ElevatedButton(
+              child: AppButton(
                 onPressed: () {
                   context.read<CartCubit>().addToCart(product );
                 },
-                style: const ButtonStyle(backgroundColor: WidgetStatePropertyAll(Colors.black)),
-                child: Text('Add to Cart', style: TextStyle(color: Colors.white, fontSize: 13.sp)),
+                title: 'Add to Cart',
               ),
             )
           ],
