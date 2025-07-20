@@ -74,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: _emailController,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       textInputAction: TextInputAction.next,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: const InputDecoration(labelText: 'Email'),
                       validator: Validators.validateEmail,
                     ),
