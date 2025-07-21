@@ -4,7 +4,7 @@
 
 
     <application
-        android:label="wasel_task"
+        android:label="Wasel Task"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
