@@ -17,6 +17,15 @@ void main() async {
   /// Init firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
+  /// Set status bar icons to dark
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.light,
+    ),
+  );
+
   runApp(const MyApp());
 }
 
@@ -34,7 +43,10 @@ class MyApp extends StatelessWidget {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Wasel Task',
-          theme: ThemeData(primarySwatch: Colors.blue),
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.black),
+          ),
           home: BlocProvider(
             create: (context) => SplashCubit()..checkAuthStatus(),
             child: const SplashScreen(),

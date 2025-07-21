@@ -29,7 +29,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Sign Up')),
+      appBar: AppBar(title: const Text('Sign Up'),         centerTitle: true,),
       body: BlocConsumer<SignupCubit, SignupState>(
         listener: (context, state) {
           /// Signup success
@@ -94,6 +94,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                       ),
                       obscureText: !_showPassword,
+                      onFieldSubmitted: (val) => _doSignUp(),
                       validator: Validators.validatePassword,
                     );
                   },
@@ -104,11 +105,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
                 /// signup button
                 AppButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      context.read<SignupCubit>().signup(_emailController.text, _passwordController.text);
-                    }
-                  },
+                  onPressed: () => _doSignUp(),
                   title: 'Sign Up',
 
                 ),
@@ -118,5 +115,12 @@ class _SignupScreenState extends State<SignupScreen> {
         },
       ),
     );
+  }
+
+
+  void _doSignUp() {
+    if (_formKey.currentState!.validate()) {
+      context.read<SignupCubit>().signup(_emailController.text.trim(), _passwordController.text.trim());
+    }
   }
 }

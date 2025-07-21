@@ -37,6 +37,11 @@ class CartCubit extends Cubit<List<CartItem>> {
     emit(List.from(state));
   }
 
+  void clearCart() {
+    state.clear();
+    emit(List.from(state));
+  }
+
   double get totalPrice => state.fold(0, (total, item) => total + (item.product.price ?? 1) * (item.quantity ?? 1));
 
   int get totalItems => state.fold(0, (sum, item) => sum + (item.quantity ?? 1));

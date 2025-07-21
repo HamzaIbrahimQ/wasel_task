@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wasel_task/cubits/cart/cart_cubit.dart';
 import 'package:wasel_task/cubits/login/login_cubit.dart';
 import 'package:wasel_task/cubits/products/products_cubit.dart';
 import 'package:wasel_task/ui/login/login_screen.dart';
 import 'package:wasel_task/ui/widgets/app_button.dart';
 import 'package:wasel_task/ui/widgets/cart_widget.dart';
 import 'package:wasel_task/ui/widgets/product_widget.dart';
+import 'package:wasel_task/utils/utility_mixin.dart';
 
-class ProductsScreen extends StatelessWidget {
+class ProductsScreen extends StatelessWidget with Utility {
   const ProductsScreen({super.key});
 
   @override
@@ -17,24 +19,35 @@ class ProductsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Products'),
-        leading: TextButton(
-          onPressed: () => _showLogoutConfirmation(context),
-          child: FittedBox(
-            child: Text(
-              'Logout',
-              style: TextStyle(
-                fontSize: 14.sp,
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ),
+        centerTitle: true,
         leadingWidth: .2.sw,
-        surfaceTintColor: Colors.transparent,
-        backgroundColor: Colors.transparent,
-        actions: const [
+        leading: FutureBuilder<bool>(
+          future: isLoggedIn(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done && snapshot.data == true) {
+              return TextButton(
+                onPressed: () => _showLogoutConfirmation(context),
+                child: FittedBox(
+                  child: Text(
+                    'Logout',
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+              );
+            } else {
+              return const SizedBox.shrink();
+            }
+          },
+        ),
+        actions: [
           /// Cart Icon
-          CartWidget(),
+          Padding(
+            padding: EdgeInsets.only(top: 4.h),
+            child: const CartWidget(),
+          ),
         ],
       ),
       body: BlocConsumer<ProductsCubit, ProductsState>(
