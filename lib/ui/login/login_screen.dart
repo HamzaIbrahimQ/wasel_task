@@ -40,7 +40,6 @@ class _LoginScreenState extends State<LoginScreen> {
         listener: (context, state) {
           /// Login success
           if (state is LoginSuccess) {
-            context.read<CartCubit>().clearCart();
             _navigateToProductsScreenWithReplacement();
           }
 

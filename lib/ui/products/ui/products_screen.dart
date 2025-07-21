@@ -171,6 +171,7 @@ class ProductsScreen extends StatelessWidget with Utility {
 
   /// Logout
   void _navigateToLoginScreen(BuildContext context) {
+    context.read<CartCubit>().clearCart();
     context.read<ProductsCubit>().signOut().then((_) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
