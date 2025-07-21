@@ -21,7 +21,7 @@ class CartItemWidget extends StatelessWidget {
         progressIndicatorBuilder: (context, url, progress) => const CupertinoActivityIndicator(),
       ),
       title: Text(item.product.title ?? ''),
-      subtitle: Text('Qty: ${item.quantity} | \$${(item.product.price ?? 1) * (item.quantity ?? 1)}'),
+      subtitle: Text('Qty: ${item.quantity} | \$${((item.product.price ?? 1) * (item.quantity ?? 1)).toStringAsFixed(2)}'),
       trailing: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
