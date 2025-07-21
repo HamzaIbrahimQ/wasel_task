@@ -30,12 +30,13 @@ class CartScreen extends StatelessWidget with Utility {
             children: [
               /// Cart items list
               Expanded(
-                child: ListView.builder(
+                child: ListView.separated(
                   itemCount: cart.length,
                   itemBuilder: (_, index) {
                     final item = cart[index];
                     return CartItemWidget(item: item, index: index);
                   },
+                  separatorBuilder: (context, index) =>  Divider(color: Colors.grey[200]),
                 ),
               ),
 

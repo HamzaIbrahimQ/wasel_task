@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +15,11 @@ class CartItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.network(item.product.thumbnail ?? '', width: 50.w),
+      leading: CachedNetworkImage(
+        imageUrl: item.product.thumbnail ?? '',
+        width: 50.w,
+        progressIndicatorBuilder: (context, url, progress) => const CupertinoActivityIndicator(),
+      ),
       title: Text(item.product.title ?? ''),
       subtitle: Text('Qty: ${item.quantity} | \$${(item.product.price ?? 1) * (item.quantity ?? 1)}'),
       trailing: Row(
